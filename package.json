@@ -1,0 +1,23 @@
+{
+  "name": "task-management",
+  "version": "1.0.0",
+  "description": "Practice project for learning JS and NodeJS backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sam007Yeah/NodeJS-Practice-TaskManagement.git"
+  },
+  "author": "Vivian Samuel Rodrigues",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sam007Yeah/NodeJS-Practice-TaskManagement/issues"
+  },
+  "homepage": "https://github.com/Sam007Yeah/NodeJS-Practice-TaskManagement#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "pg": "^8.21.0"
+  }
+}
