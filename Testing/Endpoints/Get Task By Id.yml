@@ -1,0 +1,15 @@
+info:
+  name: Get Task By Id
+  type: http
+
+http:
+  method: GET
+  url: http://localhost:4000/getTaskById/
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+​
