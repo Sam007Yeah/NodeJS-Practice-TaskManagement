@@ -1,0 +1,25 @@
+info:
+  name: Update Task By Id
+  type: http
+  seq: 1
+
+http:
+  method: PATCH
+  url: http://localhost:4000/updateTaskById/:id
+  params:
+    - name: id
+      value: 9a23e284-d92d-44cf-80e2-31ea71b04ff2
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "description" : "Look at my phone all day long"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

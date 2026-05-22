@@ -46,6 +46,55 @@ function TaskService() {
                 console.error("Error fetching task by ID:", error);
                 throw error;
             }
+        },
+
+        async deleteTaskById(id) {
+            const query = `DELETE FROM tasks WHERE id = $1`;
+            try {
+                const result = await db.query(query, [id]);
+                if (result.rowCount === 0) {
+                    throw new Error("Task not found");
+                }
+                return {message: "Task deleted successfully"};
+            }
+            catch(error) {
+                console.error("Error deleting task by ID:", error);
+                throw error;
+            }
+        },
+
+        async updateTaskById(id, values) {
+            if(id === undefined) {
+                throw new Error("Task ID is required");
+            }
+            if(!values || Object.keys(values).length === 0) {
+                throw new Error("At least one field (title, description, status) must be provided for update");
+            }
+            
+            let count = 0;
+            let fields = [];
+            let setClauses = [];
+            Object.entries(values).forEach(([key, value]) => {
+                if(value !== undefined) {
+                    setClauses.push(`${key} = $${++count}`);
+                    fields.push(value);
+                }
+            });
+
+            const query = `UPDATE tasks SET ${setClauses.join(", ")} WHERE id = $${++count}`;
+            fields.push(id);
+
+            try {
+                const result = await db.query(query, fields);
+                if (result.rowCount === 0) {
+                    throw new Error("Task not found");
+                }
+                return {message: "Task updated successfully"};
+            }
+            catch(error) {
+                console.error("Error updating task by ID:", error);
+                throw error;
+            }
         }
     }
 }

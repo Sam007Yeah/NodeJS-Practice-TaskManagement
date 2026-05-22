@@ -65,6 +65,31 @@ app.get("/getTaskById/:id", async (req, res) => {
     }
 });
 
+app.delete("/deleteTaskById/:id", async (req, res) => {
+    const {id} = req.params;
+    try {
+        const result = await taskService.deleteTaskById(id);
+        res.status(200).json(result);
+    }
+    catch (error) {
+        console.error("Error deleting task by ID", error.message || error);
+        res.status(500).json({ error: error.message || "Internal Server Error" });
+    }
+});
+
+app.patch("/updateTaskById/:id", async (req, res) => {
+    const { id } = req.params;
+    const { title, description, status } = req.body;
+    try {
+        const result = await taskService.updateTaskById(id, {"title": title, "description": description, "status": status});
+        res.status(200).json(result);
+    }
+    catch (error) {
+        console.error("Error updating task by ID", error.message || error);
+        res.status(500).json({ error: error.message || "Internal Server Error" });
+    }
+});
+
 
 function start() {
         app.listen(PORT, () => {

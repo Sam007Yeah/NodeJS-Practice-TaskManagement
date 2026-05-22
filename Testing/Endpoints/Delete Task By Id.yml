@@ -1,11 +1,11 @@
 info:
-  name: Get Task By Id
+  name: Delete Task By Id
   type: http
   seq: 1
 
 http:
-  method: GET
-  url: http://localhost:4000/getTaskById/:id
+  method: DELETE
+  url: http://localhost:4000/deleteTaskById/:id
   params:
     - name: id
       value: 8cd1713a-ff35-4f1a-a8f1-cc74fd6a8118
