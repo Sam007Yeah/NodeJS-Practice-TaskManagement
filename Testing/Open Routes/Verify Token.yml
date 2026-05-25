@@ -1,0 +1,18 @@
+info:
+  name: Verify Token
+  type: http
+  seq: 5
+
+http:
+  method: get
+  url: http://localhost:4000/verifyToken/:token
+  params:
+    - name: token
+      value: eyJhbGciOiJIUzI1NiIsIeaidn5cCI6IkpXVCJ9.eyJ1c2VyIjoiVTAwMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3OTcyOTA2OSwiZXhwIjoxNzc5NzMyNjY5fQ.43i_XyW0PbZFObKhzmaGd7HP1lkchqStzTCKtpq_68I
+      type: path
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

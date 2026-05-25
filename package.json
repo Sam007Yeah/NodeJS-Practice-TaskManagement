@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Sam007Yeah/NodeJS-Practice-TaskManagement#readme",
   "dependencies": {
     "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
     "pg": "^8.21.0",
     "uuidv4": "^6.2.13"
   }

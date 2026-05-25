@@ -2,7 +2,7 @@ const db = require("./db");
 
 async function init() {
     try {
-        await db.query(`
+        const createTaskTable = await db.query(`
             CREATE TABLE IF NOT EXISTS tasks (
                 id VARCHAR PRIMARY KEY,
                 title VARCHAR(255) NOT NULL,
@@ -11,7 +11,19 @@ async function init() {
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
         `);
-        console.log("Database initialized successfully");
+
+        const createUserTable = await db.query(`
+            CREATE TABLE IF NOT EXISTS users (
+                id VARCHAR PRIMARY KEY,
+                name VARCHAR(255) NOT NULL,
+                password VARCHAR(10) NOT NULL UNIQUE,
+                roles VARCHAR
+                );
+        `);
+
+        await Promise.allSettled([createTaskTable, createUserTable]).then(() => {
+            console.log("Database initialised!");
+        })
     } catch (error) {
         console.error("Error initializing database:", error);
     }
